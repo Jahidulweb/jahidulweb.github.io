@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAHIDUL এর ওয়েব সাইট!</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
+    h1 {
+      font-size: 3rem;
+      animation: glow 2s ease-in-out infinite alternate;
+      text-align: center;
+    }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #ff00ff;
+      }
+      to {
+        text-shadow: 0 0 20px #0ff, 0 0 30px #00f0ff;
+      }
+    }
+    #quoteBox {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      border-radius: 20px;
+      margin-top: 20px;
+      font-size: 1.5rem;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: linear-gradient(to right, #ff6a00, #ee0979);
+      color: white;
+      box-shadow: 0 0 15px #ff00cc;
+      transition: 0.3s;
+    }
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(to right, #ee0979, #ff6a00);
+    }
+    .game-list {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .game-link {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .game-link:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: center;
+    }
+
+    /* মোবাইল রেস্পনসিভ ডিজাইন */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      #quoteBox {
+        font-size: 1.2rem;
+        padding: 15px;
+      }
+      button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+      .game-link {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>JAHIDUL–এর চকচকে ওয়েবসাইটে স্বাগতম!</h1>
+  <div id="quoteBox">
+    হাই, JAHIDUL–এর দুনিয়ায় সবাইকে স্বাগতম!<br><br>
+    তুমি নিজের চেয়ে অন্যকে কখনও বেশি ভেবো না।<br>
+    কারণ তুমিও কম নও! ☺️
+  </div>
+  <button onclick="showNewQuote()">বাক্য বদলাও!</button>
+  <button onclick="toggleGames()">উন্নত</button>
+  <div class="game-list" id="gameList">
+    <a href="snake-game.html" class="game-link">সাপ গেম</a>
+    <a href="developer-massage.html" class="game-link">ডেভেলপার ম্যাসেজ</a>
+  </div>
+  <footer>© 2025 JAHIDUL WEBSITE...</footer>
+
+  <script>
+    const quotes = [ 
+      "তুমি যেমনটা ভাবো, তার থেকেও বেশি কিছু করবার ক্ষমতা তোমার আছে।",
+      "ভয় মানুষকে কাবু করে। তাই কোনো কিছু করবার সময় ভয় পেও না!",
+      "তুমিও পারো! শুধু আগ্রহ দরকার। ☺️"
+    ];
+    function showNewQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quoteBox").innerText = quotes[randomIndex];
+    }
+    function toggleGames() {
+      const gameList = document.getElementById("gameList");
+      gameList.style.display = gameList.style.display === "flex" ? "none" : "flex";
+    }
+  </script>
+</body>
+</html>
