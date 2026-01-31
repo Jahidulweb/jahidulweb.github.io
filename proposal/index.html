@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🎀 প্রপোজাল 🎀</title>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<meta name="description" content="একটি মজার ও ইন্টার‌্যাক্টিভ প্রপোজ ওয়েবপেজ। যেখানে 'না' বাটন পালিয়ে যায় আর 'হ্যাঁ' বললে আসে ভালোবাসার মেসেজ। প্রেমিক-প্রেমিকাদের জন্য ওপেন সোর্স HTML, CSS ও JavaScript প্রজেক্ট।">
+<meta name="keywords" content="proposal webpage, love proposal website, fun proposal page, bangla proposal site, html css javascript project, open source love project, no button running prank">
+<meta name="author" content="Jahidul Islam Shuvo">
+<!--কোড লেখক: জাহিদুল-->
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  .tuniverse-jahidul-card {
+    background: white;
+    width: 90%;
+    max-width: 360px;
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: #333;
+    line-height: 1.4;
+  }
+
+  .jahidul-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    min-height: 80px;
+    position: relative;
+  }
+
+  .no-btn-wrapper {
+    width: 100px; 
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button {
+    padding: 12px 28px;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  #jahidul-yesBtn {
+    background: #ff4d6d;
+    color: white;
+  }
+
+  #jahidul-yesBtn:active { transform: scale(0.9); }
+
+  #jahidul-noBtn {
+    background: #ddd;
+    color: #333;
+    transition: none; /*"না" বাটন মুভ স্পীড*/
+  }
+
+  .jahidul-message {
+    display: none;
+    font-size: 18px;
+    color: #ff4d6d;
+    margin-top: 20px;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  footer {
+    position: fixed;
+    text-align: center;
+    bottom: 35px;
+    width: 100%;
+    color: #000000c9;
+    font-size: 0.9rem;
+    font-weight: bold;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #ff4d6d; }
+    to { text-shadow: 0 0 10px #fff, 0 0 20px white; }
+  }
+
+  .heart {
+    position: fixed;
+    font-size: 20px;
+    color: #ff4d6d;
+    pointer-events: none;
+    animation: float 3s linear forwards;
+    z-index: 1;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="tuniverse-jahidul-card">
+  <div id="main-content">
+    <h1>আমি তোমাকে পছন্দ করি।<br>তুমি কি আমাকে পছন্দ করো?</h1>
+    <div class="jahidul-buttons">
+      <button id="jahidul-yesBtn">হ্যাঁ</button>
+      <div class="no-btn-wrapper">
+        <button id="jahidul-noBtn">না</button>
+      </div>
+    </div>
+    <div id="tryCounter" style="
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555;
+  min-height: 18px;
+"></div>
+  </div>
+
+  <div class="jahidul-message" id="successMsg">
+    <div style="font-size: 40px; margin-bottom: 10px;">💖🥰</div>
+    আমার প্রপোজ অ্যাকসেপ্ট করার জন্য ধন্যবাদ! ♡‿♡
+  </div>
+</div>
+
+<footer><p>🎀 তৈরি করেছেন: জাহিদুল ইসলাম শুভ | ভালোবাসার সাথে 🎀</p></footer>
+
+<script>
+  const noBtn = document.getElementById("jahidul-noBtn");
+  const yesBtn = document.getElementById("jahidul-yesBtn");
+  const msg = document.getElementById("successMsg");
+  const mainContent = document.getElementById("main-content");
+  const tryCounter = document.getElementById("tryCounter"); 
+
+
+  let yesSize = 16; 
+  let moveCount = 0; 
+  let noTryCount = 0; 
+
+  function moveNoButton() {
+    const moveDistance = 300; //কত পিক্সেল দূরে "না" বাটন সরে যাবে
+    const padding = 40; 
+    const rect = noBtn.getBoundingClientRect();
+    const currX = rect.left;
+    const currY = rect.top;
+
+    let newX, newY;
+    let attempts = 0;
+    let foundPosition = false;
+
+    while (attempts < 50 && !foundPosition) {
+      const angle = Math.random() * Math.PI * 2;
+      newX = currX + Math.cos(angle) * moveDistance;
+      newY = currY + Math.sin(angle) * moveDistance;
+
+      if (
+        newX >= padding && 
+        newX <= (window.innerWidth - noBtn.offsetWidth - padding) &&
+        newY >= padding && 
+        newY <= (window.innerHeight - noBtn.offsetHeight - padding)
+      ) {
+        foundPosition = true;
+      }
+      attempts++;
+    }
+
+    if (!foundPosition) {
+      newX = Math.random() * (window.innerWidth - noBtn.offsetWidth - (padding * 2)) + padding;
+      newY = Math.random() * (window.innerHeight - noBtn.offsetHeight - (padding * 2)) + padding;
+    }
+
+    noBtn.style.position = "fixed";
+    noBtn.style.left = newX + "px";
+    noBtn.style.top = newY + "px";
+    noBtn.style.margin = "0";
+
+    //==========বাটন মুভ করার কাউন্টার বাড়ানো==========
+    moveCount++;
+
+    // কত বার মুভ করার পর থেকে 'হ্যাঁ' বাটন বড় হওয়া শুরু করবে
+    if (moveCount >= 10) {
+      yesSize += 2; // প্রতি ক্লিকে কত পিক্সেল করে বাড়বে
+      yesBtn.style.fontSize = yesSize + "px";
+      yesBtn.style.padding = (12 + (yesSize/8)) + "px " + (28 + (yesSize/4)) + "px";
+      
+      // একটু বাড়তি মজা: হ্যাঁ বাটন বড় হওয়ার সময় একটু কাঁপবে (Visual feedback)
+      yesBtn.style.transform = "scale(1.1)";
+      setTimeout(() => {
+        yesBtn.style.transform = "scale(1)";
+      }, 100);
+    }
+  }
+
+  noBtn.addEventListener("mouseover", () => {
+  noTryCount++;
+  handleTryMessage();
+  moveNoButton();
+});
+
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  noTryCount++;
+  handleTryMessage();
+  moveNoButton();
+}, { passive: false });
+
+
+  yesBtn.addEventListener("click", () => {
+    mainContent.style.display = "none";
+    msg.style.display = "block";
+    createHearts();
+  });
+
+//========হার্ট ফাংশন (লাভ ইমুজি এনিমেশন)===========
+  function createHearts() {
+    for(let i = 0; i < 40; i++) {
+      setTimeout(() => {
+        const heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-5vh";
+        heart.style.opacity = Math.random();
+        heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+        const duration = Math.random() * 2 + 2; 
+        heart.style.animationDuration = duration + "s";
+        
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }, i * 80);
+    }
+  }
+  
+  //========ট্রাই মেসেজ ফাংশন==========
+  function handleTryMessage() {
+  if (noTryCount === 5) {
+    tryCounter.innerText = "তুমি ৫ বার চেষ্টা করেছো! 🤭";
+  } 
+  else if (noTryCount === 8) {
+    tryCounter.innerText = "আর চেষ্টা করো না! 😑";
+  } 
+}
+
+</script>
+
+</body>
+</html>
+
