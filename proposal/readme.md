@@ -56,4 +56,4 @@
 
 ##### তৈরিতে: জাহিদুল ইসলাম শুভ
 ```bash
-git clone https://github.com/jahidulweb/proposal.git```
+git clone https://github.com/jahidulweb/proposal.git
